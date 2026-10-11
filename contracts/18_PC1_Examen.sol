@@ -11,7 +11,7 @@ contract Inventario259009 {
         string tipo;
     }
 
-    Objeto[] public Objetos;
+    Objeto[] public objetos;
 
     uint256 public posicion;
     address public direccion;
@@ -20,6 +20,18 @@ contract Inventario259009 {
     constructor(uint256 _posicion) {
     posicion = _posicion;
     direccion = msg.sender;
+    }
+
+    function agregarObjeto(uint256 _id, string memory _nombre, uint256 _nivel, string memory _tipo) public {
+        objetos.push(Objeto(_id, _nombre, _nivel, _tipo));
+    }
+
+    function contarElementos() public view returns (uint256) {
+    return objetos.length;
+    }
+
+    function cambiarDireccion(address _nuevaDireccion) public {
+    direccion = _nuevaDireccion;
     }
 
 }
