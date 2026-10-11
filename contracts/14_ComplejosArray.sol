@@ -15,7 +15,7 @@ contract ComplejosArray {
     }
 
     function devolverTamanio() public view returns(uint256) {
-        return devolverTamanio();
+        return montos.length;
     }
 
     function saludar(string[] memory _nombres) public pure {
