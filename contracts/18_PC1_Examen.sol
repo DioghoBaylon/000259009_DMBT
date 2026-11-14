@@ -1,37 +1,46 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity 0.8.1;
 
-//Temática: Inventario de objetos de videojuegos
-contract Inventario259009 {
+import "hardhat/console.sol";
 
-    struct Objeto {
+contract polleria259172 {
+
+    struct Plato {
         uint256 id;
         string nombre;
-        uint256 nivel;
+        uint256 precio;
         string tipo;
+        bool estado;
     }
 
-    Objeto[] public objetos;
+    Plato[] public platos;
 
     uint256 public posicion;
     address public direccion;
 
-
     constructor(uint256 _posicion) {
-    posicion = _posicion;
-    direccion = msg.sender;
+        posicion = _posicion;
+        direccion = msg.sender;
     }
 
-    function agregarObjeto(uint256 _id, string memory _nombre, uint256 _nivel, string memory _tipo) public {
-        objetos.push(Objeto(_id, _nombre, _nivel, _tipo));
+    function agregarElemento(uint256 _id, string memory _nombre, uint256 _precio, string memory _tipo, bool _estado) public {
+
+        platos.push(Plato(_id, _nombre, _precio, _tipo, _estado));
     }
 
     function contarElementos() public view returns (uint256) {
-    return objetos.length;
+        return platos.length;
     }
 
-    function cambiarDireccion(address _nuevaDireccion) public {
-    direccion = _nuevaDireccion;
+    function cambiarDireccion(address _direccion) public {
+        direccion = _direccion;
     }
 
+    function mostrarActivos() external view {
+        for (uint256 i = 0; i < platos.length; i++) {
+            if (platos[i].estado == true) {
+                console.log("Plato activo", platos[i].id, platos[i].nombre);
+            }
+        }
+    }
 }

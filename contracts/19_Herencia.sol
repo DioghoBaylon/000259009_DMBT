@@ -8,27 +8,26 @@ contract Animal {
         especie = _especie;
     }
 
-    function hacerSonido() public pure virtual returns(string memory) {
+    function hacerSonido() public  virtual pure returns(string memory) {
         return "???";
     }
 
-    function obtenerInfo() public view returns(string memory) {
-        return string.concat("La especie es: ", especie);
+    function obtenerInfo() public view returns(string memory){
+        return string.concat("La especie es", " ", especie);
     }
+
 }
-
 contract Perro is Animal {
-    constructor() Animal("Perro"){
+    constructor() Animal("Perro") {
 
     }
-
-    function hacerSonido() public pure override returns(string memory) {
+    function hacerSonido() public override pure returns(string memory) {
         return "Guau!";
     }
-}
 
+}
 contract Gato is Animal {
-    constructor() Animal("Gato"){
-        
+    constructor() Animal("Gato") {
+
     }
 }
